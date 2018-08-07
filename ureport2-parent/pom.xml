@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.bstek.ureport</groupId>
-	<artifactId>ureport2-parent</artifactId>
+	<groupId>com.huiju</groupId>
+	<artifactId>ureport2-parent-hj</artifactId>
 	<version>2.0.6</version>
 	<packaging>pom</packaging>
 	<properties>
@@ -111,17 +111,17 @@
 			  <artifactId>maven-release-plugin</artifactId>
 			  <version>2.5.3</version>
 			</plugin>			
-			<plugin>
+			<!--<plugin>
 				<groupId>org.sonatype.plugins</groupId>
 				<artifactId>nexus-staging-maven-plugin</artifactId>
 				<version>1.6.7</version>
 				<extensions>true</extensions>
 				<configuration>
-					<serverId>ossrh</serverId>
-					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<serverId>nexus</serverId>
+					<nexusUrl>http://192.168.138.101:8081/repository/hees_release/</nexusUrl>
 					<autoReleaseAfterClose>true</autoReleaseAfterClose>
 				</configuration>
-			</plugin>
+			</plugin>-->
 			<plugin>
 		      <groupId>org.apache.maven.plugins</groupId>
 		      <artifactId>maven-source-plugin</artifactId>
@@ -148,24 +148,21 @@
 		        </execution>
 		      </executions>
 		    </plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-gpg-plugin</artifactId>
-				<version>1.5</version>
-				<executions>
-					<execution>
-						<id>sign-artifacts</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>sign</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>		    			
 		</plugins>
 	</build>
 
+	<!--huiju maven 私服-->
 	<distributionManagement>
+		<repository>
+			<id>nexus</id>
+			<url>http://192.168.138.101:8081/repository/hees_release/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus</id>
+			<url>http://192.168.138.101:8081/repository/hees_snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+	<!--<distributionManagement>
 		<snapshotRepository>
 			<id>ossrh</id>
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
@@ -181,5 +178,5 @@
 	<issueManagement>
 		<url>${jira.browse.url}/VELOCITY</url>
 	</issueManagement>
-	<description>UReport2 Parent Project</description>
+	<description>UReport2 Parent Project</description>-->
 </project>
